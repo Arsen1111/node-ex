@@ -15,7 +15,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var sanitize = require('mongo-sanitize');
-var User = require('./models/User');
+var User = require('./models/user');
 
 mongoose.connect('mongodb://'+ process.env.MONGODB_USER +':'+ process.env.MONGODB_PASSWORD +'@172.31.19.66:27017/'+ process.env.MONGODB_DATABASE);
 var db = mongoose.connection;
