@@ -17,7 +17,7 @@ var mongoose = require('mongoose');
 var sanitize = require('mongo-sanitize');
 var User = require('./models/user');
 
-mongoose.connect('mongodb://'+ process.env.MONGODB_USER +':'+ process.env.MONGODB_PASSWORD +'@172.31.19.66:27017/'+ process.env.MONGODB_DATABASE);
+mongoose.connect('mongodb://'+ process.env.MONGODB_USER +':'+ process.env.MONGODB_PASSWORD +'@10.131.29.17:27017/'+ process.env.MONGODB_DATABASE);
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
