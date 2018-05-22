@@ -15,6 +15,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var sanitize = require('mongo-sanitize');
+var User = require('./models/User');
 
 mongoose.connect('mongodb://'+ process.env.MONGODB_USER +':'+ process.env.MONGODB_PASSWORD +'@172.31.19.66:27017/'+ process.env.MONGODB_DATABASE);
 var db = mongoose.connection;
@@ -88,6 +89,10 @@ todoRouter.post('/create', todo.create);
 todoRouter.post('/markCompleted/:id', todo.markCompleted);
 todoRouter.post('/destroy/:id', todo.destroy);
 todoRouter.post('/edit/:id', todo.edit);
+
+user.createUser({username: 'test1',password:'test1'}, function(err) {
+  console.log(err);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
