@@ -16,7 +16,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var sanitize = require('mongo-sanitize');
 
-mongoose.connect('mongodb://localhost/express-todo');
+mongoose.connect('mongodb://'+ process.env.MONGODB_USER +':'+ process.env.MONGODB_PASSWORD +'@172.31.19.66:27017/'+ process.env.MONGODB_DATABASE);
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
