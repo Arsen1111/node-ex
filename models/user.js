@@ -2,12 +2,6 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var sanitize = require('mongo-sanitize');
 
-var todoSchema = mongoose.Schema({
-    content: String,
-    completed: { type: Boolean, default: false },
-    updated_at: { type: Date, default: Date.now }
-});
-
 var UserSchema = mongoose.Schema({
     username: {
       type: String,
@@ -18,8 +12,7 @@ var UserSchema = mongoose.Schema({
     }
 });
 
-var User = module.exports = mongoose.model('User', UserSchema);
-var Todo = module.exports = mongoose.model('Todo', todoSchema);
+
 
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);
@@ -45,3 +38,5 @@ module.exports.createUser = function(newUser, callback){
     });
   });
 }
+
+module.exports = mongoose.model('User', UserSchema);
