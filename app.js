@@ -90,7 +90,7 @@ todoRouter.post('/markCompleted/:id', todo.markCompleted);
 todoRouter.post('/destroy/:id', todo.destroy);
 todoRouter.post('/edit/:id', todo.edit);
 
-user.createUser({username: 'test1',password:'test1'}, function(err) {
+User.createUser({username: 'test1',password:'test1'}, function(err) {
   console.log(err);
 });
 
