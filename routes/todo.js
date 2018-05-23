@@ -18,6 +18,9 @@ module.exports = {
     },
     create: function(req, res){
         var todoContent = sanitize(req.body.content);
+        if(todoContent == ''){
+          todoContent = 'You forgot to insert content';
+        }
         // create todo
         Todo.create({ content: todoContent }, function(err, todo){
             if(err) res.render('error', { error: 'Error creating your todo'})
