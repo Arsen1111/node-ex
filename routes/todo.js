@@ -1,5 +1,6 @@
-var mongoose = require('mongoose'),
-    Todo = mongoose.model('Todo');
+var mongoose = require('mongoose');
+
+var Todo = require('../models/todo');
 
 var sanitize = require('mongo-sanitize');
 

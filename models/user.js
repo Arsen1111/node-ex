@@ -5,14 +5,17 @@ var sanitize = require('mongo-sanitize');
 var UserSchema = mongoose.Schema({
     username: {
       type: String,
+      required: true,
+      unique: true,
       index: true
     },
     password: {
-      type: String
+      type: String,
+      required: true
     }
 });
 
-
+var User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);
@@ -38,5 +41,3 @@ module.exports.createUser = function(newUser, callback){
     });
   });
 }
-
-module.exports = mongoose.model('User', UserSchema);
