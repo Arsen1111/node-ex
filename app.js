@@ -16,8 +16,8 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var sanitize = require('mongo-sanitize');
 var User = require('./models/user');
-
-mongoose.connect('mongodb://'+ process.env.MONGODB_USER +':'+ process.env.MONGODB_PASSWORD +'@10.131.29.17:27017/'+ process.env.MONGODB_DATABASE);
+mongoose.connect('mongodb://localhost/express-todo');
+//mongoose.connect('mongodb://'+ process.env.MONGODB_USER +':'+ process.env.MONGODB_PASSWORD +'@10.131.29.17:27017/'+ process.env.MONGODB_DATABASE);
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
@@ -90,9 +90,22 @@ todoRouter.post('/markCompleted/:id', todo.markCompleted);
 todoRouter.post('/destroy/:id', todo.destroy);
 todoRouter.post('/edit/:id', todo.edit);
 
+User.createUser(new User({username: 'test1',password:'test1'}), function(err) {
+  console.log(err);
+});
+
+User.createUser(new User({username: 'test2',password:'test2'}), function(err) {
+  console.log(err);
+});
+
+User.createUser(new User({username: 'test3',password:'test3'}), function(err) {
+  console.log(err);
+});
+
 /*User.createUser(new User({username: 'test1',password:'test1'}), function(err) {
   console.log(err);
 });*/
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
