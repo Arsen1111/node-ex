@@ -49,7 +49,11 @@ module.exports = {
       });
     },
     edit: function(req, res){
-        Todo.findOneAndUpdate({ _id: sanitize(req.params.id) }, {content: sanitize(req.body.content)}, function(err, todo){
+        var todoContent = sanitize(req.body.content);
+        if(todoContent == ''){
+          todoContent = 'No content';
+        }
+        Todo.findOneAndUpdate({ _id: sanitize(req.params.id) }, {content: todoContent}, function(err, todo){
             res.redirect('/todos');
         });
     }
