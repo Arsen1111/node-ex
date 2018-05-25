@@ -80,7 +80,6 @@ app.get('*', function(req, res, next){
 
 app.use('/', routes);
 app.use('/users', users);
-
 app.use('/todos', todoRouter);
 
 todoRouter.get('/', todo.all);
