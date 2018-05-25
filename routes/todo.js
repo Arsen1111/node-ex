@@ -1,14 +1,21 @@
 var mongoose = require('mongoose');
+var sanitize = require('mongo-sanitize');
 
 var Todo = require('../models/todo');
 
-var sanitize = require('mongo-sanitize');
+
 
 module.exports = {
     all: function(req, res){
         Todo.find({}, function(err, todos){
             if(err) res.render('error', { error: 'Could not fetch items from database'});
             res.render('todos', { todos: todos });
+        });
+    },
+    display: function(req, res){
+        Todo.find({}, function(err, todos){
+            if(err) res.render('error', { error: 'Could not fetch items from database'});
+            res.render('display', { todos: todos });
         });
     },
     viewOne: function(req, res){

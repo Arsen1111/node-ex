@@ -1,0 +1,6 @@
+extends layout
+block content
+  if user
+    div
+        each todo in todos
+         !{JSON.stringify(todo)}

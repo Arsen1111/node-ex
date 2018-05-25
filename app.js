@@ -84,6 +84,7 @@ app.use('/users', users);
 app.use('/todos', todoRouter);
 
 todoRouter.get('/', todo.all);
+todoRouter.get('/show', todo.display);
 todoRouter.get('/:id', todo.viewOne);
 todoRouter.post('/create', todo.create);
 todoRouter.post('/markCompleted/:id', todo.markCompleted);
